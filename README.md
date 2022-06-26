@@ -1,30 +1,30 @@
 # B-
 ## Introduction
 
-> ifood is an online food delivery web application that allows customers to order meal of their choice from their favourite restaurant. The application is developed using Django - python web framework for backend and Javascript, AJAX, JQUERY, HTML, CSS and bootstrap for frontend development. The application comes with various features including restaurant management panel, admin management panel, real time location search, and much more. The restaurant owners can also start their online services with us by registering themselves on our portal.
+> ifood is an online food delivery web application .
 
 ## Preview
 
-![Landing Page-1](/markdown/main.png)
+![add a resturant](/markdown/1.png)
 
-![Landing Page-2](/markdown/main2.png)
+![ مشتریان](/markdown/2.png)
 
-![Landing Page-3](/markdown/main3.png)
+![ بررسی بیشتر](/markdown/3.png)
 
-![Landing Page-4](/markdown/main4.png)
+![صفحه اصلی](/markdown/4.png)
 
-![Search Panel](/markdown/search.png)
+![سفارش  ](/markdown/5.png)
 
-![Restaurant Page-1](/markdown/rest1.png)
+![ویرایش آدرس](/markdown/6.png)
 
-![Restaurant Page-2](/markdown/rest2.png)
+![مالک رستوران ها](/markdown/7.png)
 
-![Menu Page](/markdown/menu.png)
+![رستوران های فعال](/markdown/8.png)
 
-![Admin Panel](/markdown/admin.png)
+![درخواست های بی نتیجه](/markdown/9.png)
 
-![History Page](/markdown/hist.png)
+![آدرس](/markdown/10.png)
 
 ## Contact
 
-> For any information, feel free to contact with me.
+mortezamosavinia
