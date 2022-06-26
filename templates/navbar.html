@@ -1,0 +1,229 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding:0px 30px;">
+    <a class="navbar-brand" href="/"><img src="{% static 'images/FoodIcon.png' %}" height="70px" width="70px" alt=""></a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" style="font-family: 'Yanone Kaffeesatz', sans-serif; font-size:48px;letter-spacing:2px; color:rgb(247, 211, 10);padding-top:8px;margin-left:10px">
+          <h1 style="font-family: 'Fredoka One', cursive;letter-spacing:8px;font-size:48px;opacity:1;">i<span style="color: rgb(238, 26, 26);">-</span>f<span style="color: rgb(238, 26, 26);">oo</span>d</h1>
+        </li>
+        
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="contact/" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;padding-top:15px;">CONTACT</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="about/" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;padding-top:15px;">ABOUT</a>
+          </li> -->
+
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <p style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;color:wheat;padding-top:15px;padding-left:10px;">EAT HEALTHY😋</p>
+        </li> -->
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;">SEARCH</button>
+      </form> -->
+
+      {% if user.is_authenticated %}
+        <!-- LOGOUT -->
+
+        <div style="margin-left: 10px;"></div>
+
+        <div>
+          <img src="{{customer.picture.url}}" class="mr-3" width="60px" height="60px" style="border: 1px transparent solid; border-radius:4px">
+        </div>
+
+        <div style="margin-left:10px;"></div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;">
+            {{request.user.username}} <sup style="color: red; font-size: 16px;
+            font-weight: bolder;">{{count}}</sup>
+          </button>
+          <div class="dropdown-menu dropdown-menu-lg-right">
+            <button class="dropdown-item" type="button">
+              <aside>
+                  <svg style="float:left; margin-top:1px" width="25px" height="25px" viewBox="0 0 16 16" class="bi bi-person-fill" fill="rgb(39, 39, 41)" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                  </svg>
+              </aside>
+
+              {% if owner %}
+
+                <a href="viewprofile/" style="letter-spacing: 2px;font-family: 'Nunito', sans-serif; font-size:20px; text-align:center; margin-left:16px;text-decoration:none;">Profile</a>
+              
+              {% else %}
+                {% if request.user.is_superuser %}
+                  <a href="viewprofile/" style="letter-spacing: 2px;font-family: 'Nunito', sans-serif; font-size:20px; text-align:center; margin-left:16px;text-decoration:none;">Profile</a>
+                {% else %}
+                  <a href="viewprofile/account/" style="letter-spacing: 2px;font-family: 'Nunito', sans-serif; font-size:20px; text-align:center; margin-left:16px;text-decoration:none;">Profile</a>
+                {% endif %}
+              {% endif %}
+
+              {% if count == 0 %}
+              {% else %}
+                <sup class="badge badge-primary badge-pill">{{count}}</sup>
+              {% endif %}
+            </button>
+
+            <div class="dropdown-divider"></div>
+
+            <button class="dropdown-item" type="button">
+              <aside>
+                  <svg style="float:left; margin-top:1px" width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="rgb(39, 39, 41)" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                    <path fill-rule="evenodd" d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v1.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 5.884V4.5zm5-2A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"/>
+                  </svg>
+              </aside>
+              <a href="history/" style="letter-spacing: 2px;font-family: 'Nunito', sans-serif; font-size:20px; text-align:center; margin-left:16px;text-decoration:none;">Orders History</a>
+            </button>
+
+            <div class="dropdown-divider"></div>
+
+            <button class="dropdown-item" type="button">
+              <aside>
+                  <img src="{% static 'images/logout.png' %}" alt="" height="18px" width="18px" style="float:left; margin-top:4px">
+              </aside>
+              <a href="logout/" style="letter-spacing: 2px;font-family: 'Nunito', sans-serif; font-size:20px; text-align:center; margin-left:16px;text-decoration:none;">Logout</a>
+          </button>
+
+          </div>
+        </div>
+
+        <div style="margin-left: 15px;"></div>
+
+        <div class="nav-item" style="margin-left:0px">
+          <a class="nav-link" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;padding-top:0px;" href="checkout/">
+            <div>
+                <svg id="cart" style="opacity: 0.5;margin:0px;padding:0px;" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart4" fill="white" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                </svg>
+              <span id="cartcount" style="margin: 0px;position: relative;left: -20px;top: -10px;display: inline-block;background-color: #ff4b5a;border: none;border-radius: 0px;width: 15px;height: 16px;line-height: 14px;color: white;border: 0.1px solid #ff4b5a;border-radius: 38px;opacity: 0.85;font-size: 20px;margin: 2px;padding-left:3px;padding-top:1.5px;padding-bottom:1.5px;padding-right:3px;">{{cartcount}}</span>
+            </div>
+          </a>
+        </div>
+
+      {% else %}    
+
+        <div style="margin-left: 10px;"></div>
+
+        <!-- login   -->
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;">
+            LOGIN
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" style="color: rgb(65, 65, 204);letter-spacing:2px; margin-left:143px;" id="exampleModalLabel">LOGIN HERE!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form action="login/" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" name="username" id="username" required>
+                          <small class="form-text text-muted">We'll never share your username with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <button type="submit" class="btn btn-success" style="margin-left:33%; width:30%;">LOGIN</button>
+                      </form>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        <div style="margin-left: 10px;"></div>
+
+        <!-- signup -->
+        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#staticBackdrop" style="font-family: 'Yanone Kaffeesatz', sans-serif;font-size:24px;letter-spacing:2px;">
+            SIGNUP
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="color: rgb(29, 119, 29);letter-spacing:2px; margin-left:143px;">SIGNUP HERE!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form action="signup/" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="fname">First Name</label>
+                            <input type="text" class="form-control" name="fname" id="fname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name</label>
+                            <input type="text" class="form-control" name="lname" id="lname" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username" required>
+                            <small class="form-text text-muted">We'll never share your username with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm">Password Confirmation</label>
+                            <input type="password" name="confirm" class="form-control" id="confirm" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger" style="margin-left:33%; width:30%;">SIGNUP</button>
+                      </form>
+                </div>
+            </div>
+            </div>
+        </div>
+
+      {% endif %}
+    </div>
+
+</nav>
+
+<!-- messages display -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" style="text-align: center;">
+            <strong style="text-align: center; letter-spacing:5px">{{message|title}}</strong>!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
